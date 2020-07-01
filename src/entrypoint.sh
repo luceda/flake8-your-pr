@@ -54,10 +54,10 @@ main() {
             --diff-filter=AM \
             "$BASE_COMMIT"
     )
-    echo "New files in branch: $new_files_in_branch"
+    echo "New files in branch: $new_files_in_branch | tr '\n' ' '"
     # Feed to flake8 which will return the output in json format.
     # shellcheck disable=SC2086
-    if [[ $new_files_in_branch == *'\.py$'* ]]; then
+    if [[ $new_files_in_branch =~ "\.py$" ]]; then
         new_python_files_in_branch=$($new_files_in_branch | grep '\.py$' | tr '\n' ' ')
         echo "New python files in branch: $new_python_files_in_branch"
         flake8 --max-line-length=120 --ignore=E121,E123,E126,E226,E24,E704,E722,W503,W504,F403,F401 --format=json $new_python_files_in_branch | jq '.' > flake8_output.json || true # NOQA
