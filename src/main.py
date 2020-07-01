@@ -38,7 +38,7 @@ class CheckRun:
             self.head_sha = check_suite['pull_requests'][0]['base']['sha']
 
     def read_flake8_output(self):
-        if os.path.exist('flake8_output.json'):
+        if os.path.exists('flake8_output.json'):
             with open('flake8_output.json') as flake8_output_file:
                 self.flake8_output = json.loads(flake8_output_file.read())
         else:
