@@ -54,7 +54,8 @@ main() {
             --diff-filter=AM \
             "$BASE_COMMIT"
     )
-    echo "New files in branch: $new_files_in_branch | tr '\n' ' '"
+    new_files_in_branch1=$($new_files_in_branch | tr '\n' ' ')
+    echo "New files in branch: $new_files_in_branch1"
     # Feed to flake8 which will return the output in json format.
     # shellcheck disable=SC2086
     if [[ $new_files_in_branch =~ "\.py$" ]]; then
