@@ -42,7 +42,7 @@ class CheckRun:
             with open('flake8_output.json') as flake8_output_file:
                 self.flake8_output = json.loads(flake8_output_file.read())
         else:
-            self.flake8_output = ""
+            self.flake8_output = {}
 
     def create_single_annotation(self, error, file_path):
         message = '{} ({})'.format(error['text'], error['code'])
