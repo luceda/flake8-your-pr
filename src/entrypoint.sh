@@ -52,7 +52,7 @@ main() {
         git diff \
             --name-only \
             --diff-filter=AM \
-            "$BASE_COMMIT" | tr '\n' ' '
+            "$BASE_COMMIT" | grep '\.py$' | tr '\n' ' '
     )
 
     # Feed to flake8 which will return the output in json format.
