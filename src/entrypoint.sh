@@ -67,7 +67,7 @@ main() {
                 "$BASE_COMMIT" | grep '\.py$' | tr '\n' ' '
         )
         echo "New python files in branch: $new_python_files_in_branch"
-        flake8 --max-line-length=120 --ignore=E121,E123,E126,E226,E24,E704,E722,W503,W504,F403,F401,F405 --format=json $new_python_files_in_branch | jq '.' > flake8_output.json || true # NOQA
+        flake8 --max-line-length=120 --ignore=E121,E123,E126,E226,E24,E704,E722,W503,W504,F403,F401 --format=json $new_python_files_in_branch | jq '.' > flake8_output.json || true # NOQA
     fi
     python /src/main.py
 }
